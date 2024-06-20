@@ -1,7 +1,5 @@
 import json
-import scrapy
-from scrapy.crawler import CrawlerProcess
-
+import requests
 
 class LululemonSpider(scrapy.Spider):
     name = "lululemon"
@@ -15,9 +13,9 @@ class LululemonSpider(scrapy.Spider):
         products = data['contents'][0]['mainContent'][0]['contents'][0]['records']
         for product in products:
             yield {
-                'displayName': product['attributes']['product.displayName'][0],
+                'product_name': product['attributes']['product.displayName'][0],
                 'category': product['attributes']['product.parentCategory.displayName'][0],
-                'first_image': product['attributes']['product.sku.skuImages'][0],
+                'image': product['attributes']['product.sku.skuImages'][0],
                 'price': product['attributes']['product.price'][0],
                 'currency': product['attributes']['currencyCode'][0],
                 'url': f"https://shop.lululemon.com/{product['attributes']['product.pdpURL'][0]}",

@@ -35,3 +35,25 @@ Use your browser or a tool like `curl` to invoke the endpoint.
 ```bash
 curl http://127.0.0.1:3000/scrape
 ```
+
+## API Endpoints
+
+### GET /scrape/
+
+Fetch product data from predefined Lululemon URLs.
+
+#### Response Format (json)
+
+```json
+[
+    {
+        "displayName": "Align Pant 28",
+        "category": "Women's Leggings",
+        "first_image": "https://example.com/image.jpg",
+        "price": 98.0,
+        "currency": "USD",
+        "url": "https://shop.lululemon.com/product/123"
+    },
+    ...
+]
+```
