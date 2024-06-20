@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  scrapy-lambda
+
+Resources:
+  ScrapyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler  # Correct handler path
+      Runtime: python3.9
+      CodeUri: functions/        # Correct code URI
+      MemorySize: 512
+      Timeout: 120
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        ScrapyAPI:
+          Type: Api
+          Properties:
+            Path: /scrape
+            Method: get
+
+Outputs:
+  ScrapyApi:
+    Description: "API Gateway endpoint URL for Prod environment"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/scrape/"
+  ScrapyFunction:
+    Description: "Scrapy Lambda Function ARN"
+    Value: !GetAtt ScrapyFunction.Arn
