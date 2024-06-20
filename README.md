@@ -12,8 +12,8 @@ This project is a serverless Python-based web scraper API designed to run on AWS
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd scrapy-lambda
+git clone https://github.com/plenzjr/serverless-python-web-scraper
+cd serverless-python-web-scraper
 ```
 
 ### Step 2: Install AWS SAM CLI
